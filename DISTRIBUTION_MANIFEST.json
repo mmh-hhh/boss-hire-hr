@@ -135,7 +135,7 @@
     },
     {
       "path": "boss_hire/single_job_llm.py",
-      "sha256": "74edee8004befd9a4f634a9ca47d2764b0fe5757dad810a61571980d11320d10"
+      "sha256": "f58c899ecc6e71d16fd5d0be1cfd740ae07858fcb340902eceb98fe38bb27a63"
     },
     {
       "path": "boss_hire/single_job_run_plan.py",
@@ -363,7 +363,7 @@
     },
     {
       "path": "tests/test_single_job_llm.py",
-      "sha256": "7e280ef142d606a7d665bbd62496a1acfa1b53895dbdc1c4f3b5a73af7c61fdd"
+      "sha256": "05e7a515a4bb3bf45c9d45c4e5780eb40080531f49338ba2252c366e18d1b88b"
     },
     {
       "path": "tests/test_single_job_run_plan.py",

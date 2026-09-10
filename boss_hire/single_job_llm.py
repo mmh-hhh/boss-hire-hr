@@ -217,7 +217,11 @@ class OpenAICompatibleJsonLlm:
         request = Request(
             f"{self.base_url.rstrip('/')}/v1/chat/completions",
             data=json.dumps(request_body, ensure_ascii=False).encode("utf-8"),
-            headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
+            headers={
+                "Authorization": f"Bearer {self.api_key}",
+                "Content-Type": "application/json",
+                "User-Agent": "boss-hire-hr/1.0",
+            },
             method="POST",
         )
         try:

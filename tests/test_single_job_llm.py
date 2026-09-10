@@ -316,6 +316,7 @@ class SingleJobLlmTests(unittest.TestCase):
         body = request.data.decode("utf-8")  # type: ignore[attr-defined]
         self.assertEqual(result["job_title"], "平台招商负责人")
         self.assertNotIn("secret-key", body)
+        self.assertEqual(request.get_header("User-agent"), "boss-hire-hr/1.0")  # type: ignore[attr-defined]
         self.assertEqual(captured["timeout"], 180)
 
     def test_real_adapter_rejects_top_level_search_array(self) -> None:
