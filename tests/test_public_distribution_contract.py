@@ -59,6 +59,8 @@ class PublicDistributionContractTests(unittest.TestCase):
         self.assertIn("mmh-hhh/boss-hire-hr", readme)
         self.assertIn("start --config smoke", readme)
         self.assertIn("本仓库有意不包含 `LICENSE`", readme)
+        self.assertIn("docs/hr-capability-demo-preview.png", readme)
+        self.assertIn("docs/hr-capability-demo.pptx", readme)
         for required in (
             "recommendation_source_enabled",
             "top_priority_search_query_count",

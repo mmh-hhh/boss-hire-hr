@@ -4,6 +4,12 @@
 
 当前版本面向“HR 会使用 Codex、Claude Code 等 coding agent，但没有公司内部代码权限”的试点场景。HR 不需要读代码；agent 可以完成 clone、安装、自检、离线测试和错误诊断。所有真实 BOSS 操作及终端精确确认必须由 HR 本人执行。
 
+## 能力演示
+
+![HR 招聘助手六页演示预览](docs/hr-capability-demo-preview.png)
+
+[下载可编辑的 6 页 PowerPoint 演示稿](docs/hr-capability-demo.pptx)。内容覆盖当前招聘闭环、HR 与 coding agent 的分工、典型使用场景、候选结果示意和 5 分钟现场演示脚本。
+
 ## 直接交给 coding agent 的提示词
 
 复制下面这段：

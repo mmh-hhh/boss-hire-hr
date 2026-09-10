@@ -1,5 +1,5 @@
 {
-  "file_count": 95,
+  "file_count": 97,
   "files": [
     {
       "path": ".codex/hooks.json",
@@ -31,7 +31,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "e62cdae22bd741660d27f063f00111dc69846e06e5a81a4b6bb3b3cb7752c8fe"
+      "sha256": "3ca558e9b06cd665dc00ee7b6841784b81639ca94b575b1187899c9d53c4077f"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -168,6 +168,14 @@
     {
       "path": "docs/boss-safe-operation.md",
       "sha256": "068c7abaebbb75b8117be7035034e6aceb96745b40d09fdecc063c8a3cd0ecbb"
+    },
+    {
+      "path": "docs/hr-capability-demo-preview.png",
+      "sha256": "b959695fd91993368a00a288aa7ab9015ca2534de4c827035d2e19c99db5a9b6"
+    },
+    {
+      "path": "docs/hr-capability-demo.pptx",
+      "sha256": "88c348cd9ef256fab785e17a2438a31bf87c3ee97681e0f660189922fa7c1580"
     },
     {
       "path": "docs/hr-quickstart.md",
@@ -319,7 +327,7 @@
     },
     {
       "path": "tests/test_public_distribution_contract.py",
-      "sha256": "876bcb3dbdabb7ad2f372e1b7ff9b4810bd56143fed474d81dfe01643c67102b"
+      "sha256": "53e6faee6e9d314bfd67f7ec8b58fde02bd80801f6d387e787f9695cbc12198c"
     },
     {
       "path": "tests/test_ranking_contract.py",
