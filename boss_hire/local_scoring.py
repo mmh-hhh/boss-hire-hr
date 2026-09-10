@@ -8,6 +8,7 @@ from boss_hire.local_security import atomic_write_json, ensure_private_directory
 from boss_hire.single_job_llm import (
     JsonLlm,
     LlmHttpError,
+    LlmTransportError,
     evaluate_redacted_candidate,
     redact_resume_for_llm,
 )
@@ -78,6 +79,7 @@ def score_inventory_resumes(
     scored_by_id: dict[str, Mapping[str, Any]] = {}
     failures_by_id: dict[str, str] = {}
     http_errors_by_id: dict[str, dict[str, Any]] = {}
+    transport_errors_by_id: dict[str, dict[str, Any]] = {}
     backpressure_stopped = False
     attempted_count = 0
 
@@ -108,6 +110,8 @@ def score_inventory_resumes(
                     failures_by_id[candidate_id] = str(exc)
                     if isinstance(exc, LlmHttpError):
                         http_errors_by_id[candidate_id] = dict(exc.public_details)
+                    if isinstance(exc, LlmTransportError):
+                        transport_errors_by_id[candidate_id] = dict(exc.public_details)
                     backpressure_stopped = backpressure_stopped or _is_rate_limited(exc)
                     continue
                 inventory.record_evaluation(stable_job_id, candidate_id, evaluation)
@@ -124,6 +128,8 @@ def score_inventory_resumes(
         failure: dict[str, Any] = {"candidate_id": candidate_id, "error": failures_by_id[candidate_id]}
         if candidate_id in http_errors_by_id:
             failure["http_error"] = http_errors_by_id[candidate_id]
+        if candidate_id in transport_errors_by_id:
+            failure["transport_error"] = transport_errors_by_id[candidate_id]
         failures.append(failure)
     inventory.save(inventory_path)
     remaining = inventory.list_score_pending(

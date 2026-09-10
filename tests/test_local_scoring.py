@@ -9,7 +9,7 @@ from typing import Any, Mapping
 
 from boss_hire.local_scoring import score_inventory_resumes
 from boss_hire.ranking_contract import finalize_continuous_rubric
-from boss_hire.single_job_llm import LlmHttpError
+from boss_hire.single_job_llm import LlmHttpError, LlmTransportError
 from boss_hire.supply_inventory import CandidateInventory
 
 
@@ -172,6 +172,23 @@ class DetailedFailureLlm(FakeEvaluationLlm):
         )
 
 
+class DetailedTransportFailureLlm(FakeEvaluationLlm):
+    def complete_json(
+        self,
+        *,
+        operation: str,
+        system_prompt: str,
+        payload: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        self.assert_operation(operation)
+        candidate_id = str(payload["candidate"]["candidate_id"])
+        self.calls.append(candidate_id)
+        raise LlmTransportError(
+            operation="candidate_evaluation",
+            error=ConnectionRefusedError(61, "private gateway address"),
+        )
+
+
 class MutatedCandidateIdLlm(FakeEvaluationLlm):
     def complete_json(
         self,
@@ -291,6 +308,28 @@ class LocalScoringTests(unittest.TestCase):
                 "headers": {"x-request-id": "request-123"},
             },
         )
+
+    def test_score_summary_preserves_sanitized_transport_error_details(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            inventory_path = root / "candidate_inventory.json"
+            self.inventory(candidate_count=1, ready_count=1).save(inventory_path)
+
+            result = score_inventory_resumes(
+                inventory_path=inventory_path,
+                job_id="job-open",
+                rubric=RUBRIC,
+                llm=DetailedTransportFailureLlm(),
+                output_dir=root / "scores",
+                workers=1,
+            )
+
+        failure = result["summary"]["failures"][0]
+        self.assertEqual(
+            failure["transport_error"],
+            {"error_type": "ConnectionRefusedError", "reason_type": "ConnectionRefusedError", "errno": 61},
+        )
+        self.assertNotIn("private gateway address", failure["error"])
 
     def test_score_binds_model_mutated_id_to_the_local_candidate(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

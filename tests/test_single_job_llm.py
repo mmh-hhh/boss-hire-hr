@@ -7,13 +7,14 @@ from email.message import Message
 from io import BytesIO
 from pathlib import Path
 from unittest.mock import patch
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 
 from boss_hire.recruiter_jobs import RecruiterJob
 from boss_hire.search_plan import SearchPlanConfig, query_history_key
 from boss_hire.state_store import content_hash
 from boss_hire.single_job_llm import (
     EVALUATION_SYSTEM_PROMPT,
+    LlmTransportError,
     OpenAICompatibleJsonLlm,
     SEARCH_GENERATOR_VERSION,
     SearchPlanGenerationError,
@@ -333,6 +334,27 @@ class SingleJobLlmTests(unittest.TestCase):
 
         with self.assertRaisesRegex(RuntimeError, "JSON 对象"):
             llm.complete_json(operation="search_plan", system_prompt="prompt", payload={"jd_text": JD})
+
+    def test_real_adapter_preserves_sanitized_transport_error_details(self) -> None:
+        def opener(_request: object, *, timeout: int) -> FakeResponse:
+            self.assertEqual(timeout, 180)
+            raise URLError(ConnectionRefusedError(61, "private gateway address"))
+
+        llm = OpenAICompatibleJsonLlm(
+            base_url="https://llm.example.test",
+            api_key="secret-key",
+            model="test-model",
+            opener=opener,
+        )
+
+        with self.assertRaises(LlmTransportError) as raised:
+            llm.complete_json(operation="rubric", system_prompt="prompt", payload={"jd_text": JD})
+
+        self.assertEqual(
+            raised.exception.public_details,
+            {"error_type": "URLError", "reason_type": "ConnectionRefusedError", "errno": 61},
+        )
+        self.assertNotIn("private gateway address", str(raised.exception))
 
     def test_real_adapter_preserves_only_public_http_error_details(self) -> None:
         headers = Message()

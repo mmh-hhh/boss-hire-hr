@@ -91,7 +91,7 @@
     },
     {
       "path": "boss_hire/local_scoring.py",
-      "sha256": "a871193503d76a9d3efb457c3facb63699525bca3a40b2d77fb7860852be1d1e"
+      "sha256": "9cd40b31c725f1c7bf4059b8c921f1098080a6369eed61e6b6fe22a4a4702b97"
     },
     {
       "path": "boss_hire/local_security.py",
@@ -135,7 +135,7 @@
     },
     {
       "path": "boss_hire/single_job_llm.py",
-      "sha256": "f58c899ecc6e71d16fd5d0be1cfd740ae07858fcb340902eceb98fe38bb27a63"
+      "sha256": "7e0052ed4e9673f67cc60ecf231565385b28c128a7a10b9b891de0992c5f9495"
     },
     {
       "path": "boss_hire/single_job_run_plan.py",
@@ -311,7 +311,7 @@
     },
     {
       "path": "tests/test_local_scoring.py",
-      "sha256": "0ddd3dbe4a83756bea68552f59ed543640b7661dce63dfb0cbef63b8af0f1531"
+      "sha256": "023fb8711ec21ec0f8d87d189fbad66b33e69bf02c36a04e5dfdf692a46f6573"
     },
     {
       "path": "tests/test_local_security.py",
@@ -371,7 +371,7 @@
     },
     {
       "path": "tests/test_single_job_llm.py",
-      "sha256": "05e7a515a4bb3bf45c9d45c4e5780eb40080531f49338ba2252c366e18d1b88b"
+      "sha256": "6b477aa4c9e74fab3451bd4551c21e1f19ade4cd4249bf691097f82502b5ae8b"
     },
     {
       "path": "tests/test_single_job_run_plan.py",

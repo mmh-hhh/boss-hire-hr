@@ -124,6 +124,26 @@ class LlmHttpError(RuntimeError):
         super().__init__(f"LLM {operation} HTTP {self.public_details['status']}; diagnostics={rendered}")
 
 
+class LlmTransportError(RuntimeError):
+    """A sanitized connection failure suitable for persistence in score summaries."""
+
+    def __init__(self, *, operation: str, error: BaseException) -> None:
+        reason = error.reason if isinstance(error, URLError) else error
+        details: dict[str, Any] = {
+            "error_type": type(error).__name__,
+            "reason_type": type(reason).__name__,
+        }
+        errno = getattr(reason, "errno", None)
+        if isinstance(errno, int):
+            details["errno"] = errno
+        verify_code = getattr(reason, "verify_code", None)
+        if isinstance(verify_code, int):
+            details["verify_code"] = verify_code
+        self.public_details = details
+        rendered = json.dumps(details, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+        super().__init__(f"LLM {operation} 请求失败；transport={rendered}")
+
+
 class SearchPlanGenerationError(ValueError):
     def __init__(self, message: str, diagnostics: Mapping[str, Any]) -> None:
         self.diagnostics = dict(diagnostics)
@@ -232,8 +252,10 @@ class OpenAICompatibleJsonLlm:
                 operation=operation,
                 public_details=_public_http_error_details(exc),
             ) from exc
-        except (URLError, TimeoutError, json.JSONDecodeError) as exc:
-            raise RuntimeError(f"LLM {operation} 请求失败：{type(exc).__name__}") from exc
+        except (URLError, TimeoutError) as exc:
+            raise LlmTransportError(operation=operation, error=exc) from exc
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(f"LLM {operation} 响应不是可解析 JSON") from exc
         try:
             content = body["choices"][0]["message"]["content"]
             result = json.loads(content)
