@@ -44,6 +44,114 @@ python3 -m venv .venv
 
 材料生成成功后会显示本地目录，交给 Codex 帮你阅读评分标准和搜索路线。相同 JD 且搜索生成契约未变化时会复用材料；契约升级会保留旧目录并生成新的不可变材料。JD 在 BOSS 发生变化时，重新读取列表、选择岗位并准备材料。生成失败可查看本地错误和安全诊断后再由本人重新执行 prepare-job，零路线或其他失败半成品不进入就绪库存。
 
+## 按使用场景选择来源配置
+
+`prepare-job` 已根据 JD 生成并冻结 8–12 条精准搜索路线。运行配置决定本轮使用推荐渠道、取前几条搜索路线、哪些路线读第二页，以及是否排除近 14 天已查看候选。它不允许手工填写新的搜索词。
+
+先让 agent 或本人查看现有配置：
+
+```bash
+.venv/bin/python scripts/run_single_job_live.py configs
+```
+
+初始化生成的两个配置：
+
+- `smoke`：推荐关、搜索路线 1 条、第二页 0 条、包含近 14 天已查看候选。用于首次真实验证和排错。
+- `default`：推荐关、搜索路线 3 条、第二页 0 条、包含近 14 天已查看候选。用于日常精准搜索。
+
+典型场景可以让 agent 在 `data/local/run_configs/<名称>.json` 新建配置。配置必须恰好包含下面四个字段：
+
+| 场景 | 建议配置 | 适用原因 |
+|---|---|---|
+| 新岗位或供给较少，希望扩大候选来源 | 推荐 `1`、搜索 `3`、第二页 `0`、`include_all` | 推荐首页与精准搜索同时使用 |
+| 已验证搜索路线质量，希望增加覆盖 | 推荐 `0`、搜索 `3`、第二页 `1` 或 `2`、`include_all` | 只对前几条高优先级路线增加第 2 页 |
+| 已看过较多候选，希望减少重复 | 推荐 `0`、搜索 `5`、第二页 `0`、`exclude_14d` | 搜索时排除近 14 天已查看候选 |
+| 只看推荐渠道 | 推荐 `1`、搜索 `0`、第二页 `0`、`include_all` | 只读推荐首页；不能使用搜索筛选 |
+| 严格按城市、经验、薪资等条件找人 | 推荐 `0`、搜索 `3` 或 `5`、第二页按需、`include_all` 或 `exclude_14d` | 中文筛选只作用于搜索，不作用于推荐 |
+
+例如，新岗位同时使用推荐与 3 条搜索路线：
+
+```json
+{
+  "recommendation_source_enabled": 1,
+  "top_priority_search_query_count": 3,
+  "second_page_search_query_count": 0,
+  "recent_view_filter": "include_all"
+}
+```
+
+例如，搜索路线效果稳定后，让前 2 条路线读取第二页：
+
+```json
+{
+  "recommendation_source_enabled": 0,
+  "top_priority_search_query_count": 3,
+  "second_page_search_query_count": 2,
+  "recent_view_filter": "include_all"
+}
+```
+
+例如，减少近 14 天重复查看：
+
+```json
+{
+  "recommendation_source_enabled": 0,
+  "top_priority_search_query_count": 5,
+  "second_page_search_query_count": 0,
+  "recent_view_filter": "exclude_14d"
+}
+```
+
+`top_priority_search_query_count=N` 表示取冻结计划中优先级最高的前 N 条路线。实际计划不足 N 条时会如实显示 shortfall，不生成宽泛搜索词补齐。`second_page_search_query_count=M` 表示前 M 条已选路线额外读取第 2 页，必须满足 `0 ≤ M ≤ N`。推荐只读取第 1 页。
+
+来源阶段的计划请求数为：岗位列表复核 1 次 + 所选 JD 复核 1 次 + 推荐渠道 0/1 次 + 实际选中的搜索路线首页数 + 实际选中的第二页数。`start` 会在确认前显示最终精确次数；以终端显示为准。
+
+agent 可以创建或修改 `data/local/run_configs` 下的配置，并运行 `configs` 验证，但不能执行 `start`。推荐提示词：
+
+> 根据我的岗位和供给目标，在 data/local/run_configs 下创建一个只包含 recommendation_source_enabled、top_priority_search_query_count、second_page_search_query_count、recent_view_filter 的配置。运行 scripts/run_single_job_live.py configs 验证，解释为什么这样选择以及预计请求构成。不要替我执行 start、continue 或任何真实 BOSS 阶段。
+
+## 添加搜索筛选
+
+查看程序当前支持的中文字段和选项：
+
+```bash
+.venv/bin/python scripts/search_filters.py list
+```
+
+筛选在 `start` 时用可重复的 `--filter "字段=选项"` 传入，并冻结到本轮所有搜索路线。常见组合：
+
+仅找杭州、3–5 年、本科及以上、近期活跃候选：
+
+```bash
+.venv/bin/python scripts/run_single_job_live.py start --config default \
+  --filter "城市=杭州" \
+  --filter "工作经验=3-5年" \
+  --filter "学历=本科及以上" \
+  --filter "活跃度=近一周活跃"
+```
+
+增加薪资范围和职位匹配要求：
+
+```bash
+.venv/bin/python scripts/run_single_job_live.py start --config default \
+  --filter "薪资=20K-30K" \
+  --filter "牛人职位要求=最近从事此职位,牛人期望此职位"
+```
+
+院校和求职状态支持多选，使用英文逗号分隔：
+
+```bash
+.venv/bin/python scripts/run_single_job_live.py start --config default \
+  --filter "院校要求=双一流,211院校,985院校" \
+  --filter "求职状态=离职-随时到岗,在职-考虑机会,在职-月内到岗"
+```
+
+每个字段在一次 `start` 中只能设置一次；单选字段只能有一个选项；`不限` 不能和其他选项同时选择。薪资格式为 `20K-30K`、`20K-不限` 或 `不限-30K`。城市当前只支持列表中的热门城市。
+
+筛选条件只作用于搜索路线，对推荐渠道无效，也不会增加请求次数。如果岗位要求必须严格满足城市、学历、经验或薪资等条件，应使用关闭推荐的配置。`过滤近14天查看=开启` 也可以作为一次性筛选传入；反复使用时更适合写入配置的 `recent_view_filter=exclude_14d`。
+
+`start` 会先显示最终采用的中文筛选和精确来源次数。本人核对无误后才输入终端要求的 `确认来源N次`。如果需要改变配置或筛选，确认前退出；运行冻结后不要修改，应关闭当前运行再启动新一轮。
+
 ## 找候选、评分和收藏
 
 首次真实闭环建议先跑最小冒烟范围。`smoke` 关闭推荐，只读取冻结搜索计划中的第 1 条路线、第 1 页；随后只选择 1 人读取详情，因此也只会评分这 1 人：

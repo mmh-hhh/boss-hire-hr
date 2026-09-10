@@ -31,7 +31,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "bacd37d5930a48710587cd241cb6f4662b53f63bb033de5dc77f411518243671"
+      "sha256": "e62cdae22bd741660d27f063f00111dc69846e06e5a81a4b6bb3b3cb7752c8fe"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -171,7 +171,7 @@
     },
     {
       "path": "docs/hr-quickstart.md",
-      "sha256": "4e6e106892043790812ecd21193f38ae7534a6c6b49fcb25b4bd934399bd31fa"
+      "sha256": "3fc3c1a7599cbe8755c209af6e69c6178f11ea16735a1cc4c13b056cd7b0aa81"
     },
     {
       "path": "requirements-boss.txt",
@@ -319,7 +319,7 @@
     },
     {
       "path": "tests/test_public_distribution_contract.py",
-      "sha256": "89a5dfa016f112c29204ff4a56b41edb417aa90e9041769a14348ac28527e169"
+      "sha256": "876bcb3dbdabb7ad2f372e1b7ff9b4810bd56143fed474d81dfe01643c67102b"
     },
     {
       "path": "tests/test_ranking_contract.py",

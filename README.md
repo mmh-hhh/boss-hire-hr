@@ -52,6 +52,44 @@ HR 本人在 Chrome 官方页面登录 BOSS 招聘方账号，然后逐条执行
 
 命令中的岗位编号和精确确认文本以终端显示为准。每条命令执行后都会退出，不会自动进入下一阶段。
 
+## 常见使用场景
+
+运行配置位于 `data/local/run_configs/<名称>.json`。初始化会生成 `smoke` 和 `default`；coding agent 可以按下面的场景创建其他配置，再运行 `configs` 检查，不需要改业务代码。
+
+| 场景 | 推荐渠道 | 搜索词 | 第二页 | 近 14 天已查看 |
+|---|---:|---:|---:|---|
+| 第一次真实验证、排查环境 | 关 | 1 | 0 | 包含 |
+| 日常精准搜索 | 关 | 3 | 0 | 包含 |
+| 新岗位、希望扩大来源 | 开 | 3 | 0 | 包含 |
+| 首页结果有效，希望沿同一路线多看一页 | 关 | 3 | 前 1–2 条 | 包含 |
+| 已看过较多候选，希望减少重复 | 关 | 5 | 0 | 排除 |
+
+四个配置字段分别是：
+
+- `recommendation_source_enabled`：`1` 开启推荐首页，`0` 关闭。推荐只读第一页。
+- `top_priority_search_query_count`：从岗位材料已经生成的搜索计划中选前 N 条路线；不会临时发明搜索词或为凑数量补路线。
+- `second_page_search_query_count`：前 M 条已选搜索路线再读第 2 页，必须满足 `0 ≤ M ≤ N`。
+- `recent_view_filter`：`include_all` 包含已查看候选；`exclude_14d` 排除近 14 天已查看候选。
+
+搜索时可重复添加中文 `--filter`。例如：
+
+```bash
+.venv/bin/python scripts/run_single_job_live.py start --config default \
+  --filter "城市=杭州" \
+  --filter "工作经验=3-5年" \
+  --filter "学历=本科及以上" \
+  --filter "薪资=20K-30K" \
+  --filter "活跃度=近一周活跃"
+```
+
+先运行 `.venv/bin/python scripts/search_filters.py list` 查看全部可用选项。筛选条件会应用到本轮所有搜索路线，不增加请求次数；推荐渠道不受这些筛选影响。必须严格满足筛选条件时关闭推荐。多选条件用英文逗号连接，例如 `院校要求=双一流,211院校,985院校`。
+
+可以把下面这句话交给 agent：
+
+> 请阅读 docs/hr-quickstart.md 的“按使用场景选择来源配置”和“添加搜索筛选”章节。根据我描述的岗位供给目标，在 data/local/run_configs 下创建一个只含四个允许字段的 JSON 配置，运行 scripts/run_single_job_live.py configs 验证并向我解释预计来源请求构成。不要替我执行 start 或 continue。
+
+详细配置示例、请求次数计算和更多筛选组合见 [HR 首次使用](docs/hr-quickstart.md)。
+
 ## 数据和安全
 
 `.env`、认证、候选详情、评分结果和运行账本只保存在本机的 gitignored 目录。不要提交或复制 `data/local`、`.env`、Cookie、Token、简历或终端中的敏感内容。

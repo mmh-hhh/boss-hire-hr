@@ -48,14 +48,41 @@ class PublicDistributionContractTests(unittest.TestCase):
 
     def test_public_readme_is_agent_first_and_points_to_the_main_flow(self) -> None:
         manifest_path = ROOT / "DISTRIBUTION_MANIFEST.json"
-        if not manifest_path.is_file():
-            self.skipTest("internal source tree")
-
-        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        readme_path = (
+            ROOT / "README.md"
+            if manifest_path.is_file()
+            else ROOT / "distribution/README.public.md"
+        )
+        readme = readme_path.read_text(encoding="utf-8")
+        quickstart = (ROOT / "docs/hr-quickstart.md").read_text(encoding="utf-8")
         self.assertIn("直接交给 coding agent 的提示词", readme)
         self.assertIn("mmh-hhh/boss-hire-hr", readme)
         self.assertIn("start --config smoke", readme)
         self.assertIn("本仓库有意不包含 `LICENSE`", readme)
+        for required in (
+            "recommendation_source_enabled",
+            "top_priority_search_query_count",
+            "second_page_search_query_count",
+            "recent_view_filter",
+            "城市=杭州",
+            "学历=本科及以上",
+            "推荐渠道不受这些筛选影响",
+            "data/local/run_configs",
+        ):
+            with self.subTest(required=required):
+                self.assertIn(required, readme)
+        for required in (
+            "## 按使用场景选择来源配置",
+            "## 添加搜索筛选",
+            "只看推荐渠道",
+            "严格按城市、经验、薪资等条件找人",
+            "岗位列表复核 1 次",
+            "过滤近14天查看=开启",
+            "牛人职位要求=最近从事此职位,牛人期望此职位",
+            "筛选条件只作用于搜索路线",
+        ):
+            with self.subTest(required=required):
+                self.assertIn(required, quickstart)
 
 
 if __name__ == "__main__":
