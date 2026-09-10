@@ -1,0 +1,48 @@
+{
+  "list_response": {
+    "code": 0,
+    "message": "Success",
+    "zpData": [
+      {
+        "jobName": "跨境汽配平台招商总监",
+        "encryptJobId": "job-open",
+        "jobOnlineStatus": 1,
+        "description": "开放中"
+      },
+      {
+        "jobName": "汽配数据负责人",
+        "encryptJobId": "job-waiting",
+        "jobOnlineStatus": 0,
+        "description": "待开放"
+      },
+      {
+        "jobName": "历史关闭岗位",
+        "encryptJobId": "job-closed",
+        "jobOnlineStatus": 2,
+        "description": "已关闭"
+      }
+    ]
+  },
+  "details": {
+    "job-open": {
+      "code": 0,
+      "message": "Success",
+      "zpData": {
+        "job": {
+          "encryptId": "job-open",
+          "jobName": "跨境汽配平台招商总监",
+          "jobStatus": 0,
+          "postDescription": "负责建立跨境汽配商家池并管理平台招商结果。",
+          "positionName": "招商",
+          "locationName": "上海",
+          "addressText": "上海闵行区",
+          "lowSalary": 30,
+          "highSalary": 60,
+          "salaryMonth": 12,
+          "experience": 106,
+          "degree": 203
+        }
+      }
+    }
+  }
+}

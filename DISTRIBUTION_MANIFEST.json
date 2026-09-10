@@ -1,0 +1,387 @@
+{
+  "file_count": 95,
+  "files": [
+    {
+      "path": ".codex/hooks.json",
+      "sha256": "147e2ac5f7bd0c2233b3c58af304ecc2cc112355bc6d68d05ecdb49e75ca71e5"
+    },
+    {
+      "path": ".codex/hooks/boss_access_policy.py",
+      "sha256": "ef34a79dbe22d07426d5901e40a01cdf1a6b1532eb75448edf5b5a39685b14c0"
+    },
+    {
+      "path": ".codex/rules/boss.rules",
+      "sha256": "d8a62d2b821831f34b4c96506b07679118ce9f735c23a4d7a11eeb390f502e14"
+    },
+    {
+      "path": ".env.example",
+      "sha256": "59ffa0e7ddc8bd0ab6833f6baf53eef51df6558b2c286021a7db3ec8a2547a61"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "8431e02dde804ef8484946309c4797917eaf8cd24214c8ff8ef5e44263e7ce59"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "64d3adbed6f54c1112db8ca7915e1a4aae110e67834de93a5b5c8724a67f11fa"
+    },
+    {
+      "path": "PUBLIC_RELEASE.md",
+      "sha256": "02accc1f8e73f71ebff2b0d1309168d6556cbaf43399a384e422c3811140f099"
+    },
+    {
+      "path": "README.md",
+      "sha256": "bacd37d5930a48710587cd241cb6f4662b53f63bb033de5dc77f411518243671"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "135a71ff816e9ce00d48685340e9418eccb7bade6cf0304358b14048bb60bfcb"
+    },
+    {
+      "path": "boss_hire/__init__.py",
+      "sha256": "793f850d58464e707ab833a456d571f2e050d9d830da6a079abbdda8f23437f7"
+    },
+    {
+      "path": "boss_hire/boss_access.py",
+      "sha256": "dddef7d4f240fadbf2c8d6a6e38f149ecd1a4ad4bd48d595eeac27d6682681cc"
+    },
+    {
+      "path": "boss_hire/boss_auth_sync.py",
+      "sha256": "bb4c366cea053beb3da8e75535db16d7deadd71017a11e0ae3ca2def058777ec"
+    },
+    {
+      "path": "boss_hire/boss_guard.py",
+      "sha256": "599ccc9617da3d1c965bdf476eb81289266c3faa4e507cfb4d071a417d779fad"
+    },
+    {
+      "path": "boss_hire/boss_live_authorization.py",
+      "sha256": "00944b97a5ce7d7cad5556d75f8507890a35a03c85e7222f2688f620cf1cbe99"
+    },
+    {
+      "path": "boss_hire/favorite_delivery.py",
+      "sha256": "2ffa8bd489279c65101d7a171ba5ff52162233a57fed809b6ead71b0a3d7ced9"
+    },
+    {
+      "path": "boss_hire/favorite_registry.py",
+      "sha256": "c0e04628ceebe589181d2b019449239668e2b72d8ef62eae8cf61a719a9b593b"
+    },
+    {
+      "path": "boss_hire/favorite_sync.py",
+      "sha256": "b1eef749ec9e2fef62bce35f1e690165f61913b0c2decfaec181ed2d17a93b8f"
+    },
+    {
+      "path": "boss_hire/favorite_sync_contract.py",
+      "sha256": "bb3e196355161e525ab3f4cea4a08135fc1cf7b1b1f2542e98ed967083f034aa"
+    },
+    {
+      "path": "boss_hire/favorite_workflow.py",
+      "sha256": "9269ee424ebe1c25689f335360054ebca6c017bf42352df4481fc1f37b1e26d3"
+    },
+    {
+      "path": "boss_hire/favorite_workflow_command.py",
+      "sha256": "e524167832d898bb88a88325656fb4a6a529d55c2a94fff55fe44ecfc1e24491"
+    },
+    {
+      "path": "boss_hire/job_setup.py",
+      "sha256": "a8142c9830da83837bb008fdb06a769e628c2149132f878eee0a23e45cd4e104"
+    },
+    {
+      "path": "boss_hire/llm_confirmation.py",
+      "sha256": "37ab2cddf3c7d13d68ee39600e3e003784ea60295dee437049e2e0d41c087612"
+    },
+    {
+      "path": "boss_hire/local_scoring.py",
+      "sha256": "a871193503d76a9d3efb457c3facb63699525bca3a40b2d77fb7860852be1d1e"
+    },
+    {
+      "path": "boss_hire/local_security.py",
+      "sha256": "f52e5563e487d37015f9c521914915a3cee5990046160afd37c72ac6109f6005"
+    },
+    {
+      "path": "boss_hire/mvp_pipeline.py",
+      "sha256": "399d16660078a7a991e2ecb7ae1f099e1f69d4b9119156123f0ca6aed403ad54"
+    },
+    {
+      "path": "boss_hire/ranking_contract.py",
+      "sha256": "f774a5257eaeaa03996ebc58d5f154fec9b868ff1febf2bd4062f7a89dcaddb6"
+    },
+    {
+      "path": "boss_hire/recruiter_jobs.py",
+      "sha256": "8cea58f4ffe5aae23b5627337e8ef02d123a36caed60ee88b9fae6f1cf44ad51"
+    },
+    {
+      "path": "boss_hire/run_reporting.py",
+      "sha256": "fe5cf2f53b2dd7a11b16e3d001924293dbbb344fc0ac34b415afa0dd93281129"
+    },
+    {
+      "path": "boss_hire/safe_recruiter_client.py",
+      "sha256": "61aebe9a47d3fc5da9f3f1b0628d49ff73b663199edb817a70b6f716812a507d"
+    },
+    {
+      "path": "boss_hire/search_filters.py",
+      "sha256": "4d0f9c7f70f983c90f4c5ea8e1d8b91562254dd2a03938c1eae3b0b95ced29a2"
+    },
+    {
+      "path": "boss_hire/search_plan.py",
+      "sha256": "76f2f94dad43ededf3e7dfd188fa972893210fcbb093fe03ef6b4cc8fbcf003a"
+    },
+    {
+      "path": "boss_hire/shortlist_publish.py",
+      "sha256": "3038dd01f2e4fcce200486e575f16a938380efc199cd46b673d05cc268d5e78c"
+    },
+    {
+      "path": "boss_hire/single_job_live.py",
+      "sha256": "40b9a32db077f1cad0dd7ee5c202d61912bbc8d01e33bb8f4c1ca73efae6b71a"
+    },
+    {
+      "path": "boss_hire/single_job_llm.py",
+      "sha256": "74edee8004befd9a4f634a9ca47d2764b0fe5757dad810a61571980d11320d10"
+    },
+    {
+      "path": "boss_hire/single_job_run_plan.py",
+      "sha256": "eec9c95b97497ed2919932e00ded1c4b6af9df982000f9d61ce2232ac164fb68"
+    },
+    {
+      "path": "boss_hire/state_store.py",
+      "sha256": "8bf25eaa51a1a6ddbf18e3e5978231e5983fb21fe9fe135815e6e0a272baac2b"
+    },
+    {
+      "path": "boss_hire/supply_inventory.py",
+      "sha256": "6192384dc7ce4f70efcad10b1ec390456ea3168d0ab907263fa601eee32e83d6"
+    },
+    {
+      "path": "boss_hire/workflow_run.py",
+      "sha256": "89bd4cba7982d976bd9b1f842af6b1bf15000482142e3d51d5d3a3222e781e06"
+    },
+    {
+      "path": "boss_hire/workflow_status.py",
+      "sha256": "2af7b3d3023ee019254243bd9dbe02828f43ba3ca9501f08d4ef19eee1903f76"
+    },
+    {
+      "path": "configs/search_top5_exclude_14d.example.json",
+      "sha256": "ba7b8a82eaf2b0d90d89fad4bced8115cf68782eb64b53ab60a1c2ffad6125fe"
+    },
+    {
+      "path": "configs/single_job_live.example.json",
+      "sha256": "9001d064f2c0287c26536f143ffbd83b061840945526a923cc2be84f7e390d60"
+    },
+    {
+      "path": "docs/boss-safe-operation.md",
+      "sha256": "068c7abaebbb75b8117be7035034e6aceb96745b40d09fdecc063c8a3cd0ecbb"
+    },
+    {
+      "path": "docs/hr-quickstart.md",
+      "sha256": "4e6e106892043790812ecd21193f38ae7534a6c6b49fcb25b4bd934399bd31fa"
+    },
+    {
+      "path": "requirements-boss.txt",
+      "sha256": "f2d52a08a9b795c071342df686001528a38424fb4f14b464a5e0251abf97477f"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "5f6a2febe64d4074666d09eefdb5e965d5aec032625f9c23071eeea2b34d4799"
+    },
+    {
+      "path": "scripts/run_offline_tests.py",
+      "sha256": "d9aac56cc44aff9d594d8bfa3c44589d8d26c1caeef7393e0e778130c3502fbf"
+    },
+    {
+      "path": "scripts/run_single_job_live.py",
+      "sha256": "b2286b7a58c3f28c399380d2c64895dd5e9d25c0cc232798f0463ee3e91a30f3"
+    },
+    {
+      "path": "scripts/search_filters.py",
+      "sha256": "55cebcb39d4c8f9de68686394fbe9b627b8fc4e6066b5a2be3d1df0aba6ef9eb"
+    },
+    {
+      "path": "scripts/secure_local_boss_data.py",
+      "sha256": "4306672f9a3a4192a0d38416daacf4d09e10b4e20e6890649029ae270156f820"
+    },
+    {
+      "path": "scripts/setup_hr.py",
+      "sha256": "0a0cc18597c85aa33647eb4ee50acc0bc8a50fa6fb8210bf22da2cc1ed455ce0"
+    },
+    {
+      "path": "tests/fixtures/README.md",
+      "sha256": "3051f39528536542567eb4a5b01574227d1cd2d104afccab9794ede96534335e"
+    },
+    {
+      "path": "tests/fixtures/boss_favorite_list/README.md",
+      "sha256": "a7f5e67e47ccb0d23fae4031df7529024545f3a522cac38fe60a42e6875249ac"
+    },
+    {
+      "path": "tests/fixtures/boss_favorite_list/empty_end.json",
+      "sha256": "a290322eb63930757cff11dc7061f091515846092d337189f13c56ee0da7ec6a"
+    },
+    {
+      "path": "tests/fixtures/boss_favorite_list/malformed_missing_card_list.json",
+      "sha256": "6bc4eecf7e3dd80f0d4c854a0360a75bbc0b8dc1fcdeedb12c4c6394d6ef93b6"
+    },
+    {
+      "path": "tests/fixtures/boss_favorite_list/page_1_has_more.json",
+      "sha256": "d16e1d3b9591030c02caeca066e50376ed30d6685a0c67b82d890ec4dde7a5c1"
+    },
+    {
+      "path": "tests/fixtures/boss_favorite_list/page_2_end.json",
+      "sha256": "ef67a87747cffa8c220d51a8b51d9fe1d44e5ef0f39cdd4226f144aa47fccfe2"
+    },
+    {
+      "path": "tests/fixtures/boss_favorite_list/page_40_has_more.json",
+      "sha256": "90cfd29b0e3367064282660d7f590ae6bb66a51d248eb8d08ca057ceb5b9531b"
+    },
+    {
+      "path": "tests/fixtures/boss_favorite_write/request_contract.json",
+      "sha256": "2ba16c255b93ba2b6c7399b58406c4bb8d334a62c6488b8c81c9475b18b73f02"
+    },
+    {
+      "path": "tests/fixtures/mvp_search.json",
+      "sha256": "1c0caf5df60b6c0559c1ab7d29de46dcdac28f30e81619703296ab60afda0b0a"
+    },
+    {
+      "path": "tests/fixtures/recruiter_jobs.json",
+      "sha256": "a6bc4338e1374303c80bbb961a33a78b63547f3abbaed2db2a699a989c0afc72"
+    },
+    {
+      "path": "tests/fixtures/search_plan_v3_september_3_history.json",
+      "sha256": "3c3f9d5d726edbe6cc6ce26c6aa9c0fccb92ade8b7f1c2e94b39123bb59bcd2f"
+    },
+    {
+      "path": "tests/network_guard.py",
+      "sha256": "e41950bbf4c46bc55d6d5912d3ba0be77fc41d95e74c95a735b4ff492e0defa2"
+    },
+    {
+      "path": "tests/test_boss_access.py",
+      "sha256": "71769d469da65dfde46d638d6fc64ed8805ce7fe9937d978c0ce9d57b0ef0eeb"
+    },
+    {
+      "path": "tests/test_boss_agent_harness.py",
+      "sha256": "0e44548c63338d2443553d4e9177e9becb3b766583c7cd1e0e5589713091d571"
+    },
+    {
+      "path": "tests/test_boss_auth_sync.py",
+      "sha256": "ca630bfea210ee0d476e2b9ef78712827cc346a3cb2dd573d007ad4c4922a657"
+    },
+    {
+      "path": "tests/test_boss_guard.py",
+      "sha256": "d1d9c99be6eb778296d1f88bd292ec7e3c4c1de8609c5fc61166ab53e123da3e"
+    },
+    {
+      "path": "tests/test_boss_live_authorization.py",
+      "sha256": "5f788506967a06e4e3a732613bd2ce44f5013ec131f157af00c8d34680b8db89"
+    },
+    {
+      "path": "tests/test_favorite_delivery.py",
+      "sha256": "5e091cba2ab94646a0fcb169ac935d5fd5d1fddbf22ba7e6bc5b0d358bd2040d"
+    },
+    {
+      "path": "tests/test_favorite_delivery_cli.py",
+      "sha256": "6f2995db7fad2aabeaf3b7c24cdf998f15fd0ced4ea0a1dbf5e5a7b2feac341c"
+    },
+    {
+      "path": "tests/test_favorite_registry.py",
+      "sha256": "bf6949d51cd66eb7be5e67e74e80202947fdfd49b7fe2fb8dc2b5788a7e34a63"
+    },
+    {
+      "path": "tests/test_favorite_sync.py",
+      "sha256": "fe2e14b31a081d390530924e5af4acbc619f0809f2937f3984dde7cc0121b141"
+    },
+    {
+      "path": "tests/test_favorite_workflow.py",
+      "sha256": "1bd6dcbc96c2e18976878b6704cb7a47b9d79e9d7fd102f8cabafd543711793a"
+    },
+    {
+      "path": "tests/test_hr_onboarding.py",
+      "sha256": "d53915713b2e5fda1110c672214ab05e17acb2193ec78097e423a77685c9a6c8"
+    },
+    {
+      "path": "tests/test_hr_setup.py",
+      "sha256": "96b016d0795e68eda9ec962a76e90d0401a0a314205b81158f115b9a288e2a63"
+    },
+    {
+      "path": "tests/test_llm_confirmation.py",
+      "sha256": "7d8c57d8a45658413eaa9780ce370ef8d9b5ead79e6c2aaa762dd3b628510b04"
+    },
+    {
+      "path": "tests/test_local_scoring.py",
+      "sha256": "0ddd3dbe4a83756bea68552f59ed543640b7661dce63dfb0cbef63b8af0f1531"
+    },
+    {
+      "path": "tests/test_local_security.py",
+      "sha256": "c4c315e21559521714e660925eab5dc34b10d40d4cf2fdcd821ddc1891dd8eb6"
+    },
+    {
+      "path": "tests/test_mvp_pipeline.py",
+      "sha256": "9f4a7db9ab42c8e7652dd6c6d7a5413b5bde4bcef723b4e930e394f08f7d0674"
+    },
+    {
+      "path": "tests/test_network_guard.py",
+      "sha256": "813c288d431ab6ab510db422a98983ca1677eeddadd8d054ed14f993af893d55"
+    },
+    {
+      "path": "tests/test_public_distribution_contract.py",
+      "sha256": "89a5dfa016f112c29204ff4a56b41edb417aa90e9041769a14348ac28527e169"
+    },
+    {
+      "path": "tests/test_ranking_contract.py",
+      "sha256": "1944e6d7adbcdbb846ccae7d64d7b270fdec9ac32b13c4041456a4ecc672f167"
+    },
+    {
+      "path": "tests/test_recruiter_jobs.py",
+      "sha256": "07cf594ce6fae78cdc072adec8f213c1b263d892076c0a5c49155be6eb0f04e9"
+    },
+    {
+      "path": "tests/test_safe_recruiter_client.py",
+      "sha256": "186e809292e8ac9eb858dd68d367e752e9e0b8f8a4689b8aebdb76bef04c9e2b"
+    },
+    {
+      "path": "tests/test_search_filters.py",
+      "sha256": "04a222734a33d61023c52fda1f1211ec6f4e9047e919d5ca16035985387669d7"
+    },
+    {
+      "path": "tests/test_search_plan.py",
+      "sha256": "3b897478a956b315777e39412885816afb0472b9f4c5ff6e78d9358d25874b18"
+    },
+    {
+      "path": "tests/test_search_plan_v3_history_fixture.py",
+      "sha256": "209addb5dc984a5e28499c6a82db32a1402a3d378e8811d2cd2067baaa6f0ea1"
+    },
+    {
+      "path": "tests/test_secure_local_boss_data.py",
+      "sha256": "dc894753b1766ec43950045b4f3ae29eda523510d26b8da2d17196a3ffad0c07"
+    },
+    {
+      "path": "tests/test_selected_job.py",
+      "sha256": "2a87a5ade0885e6122ba5b41aa1bca8d34eef58ea43100d8a394985695e938ae"
+    },
+    {
+      "path": "tests/test_shortlist_publish.py",
+      "sha256": "0c9510ebb6ab8dd66ea38fd85f9efefd27916dff244412636cc56b287fbf9fc4"
+    },
+    {
+      "path": "tests/test_single_job_live.py",
+      "sha256": "622e7b233d4d11e30a5fc8a9703bd5cee88f12581f456c354d0cc6ecdedfa3c7"
+    },
+    {
+      "path": "tests/test_single_job_llm.py",
+      "sha256": "7e280ef142d606a7d665bbd62496a1acfa1b53895dbdc1c4f3b5a73af7c61fdd"
+    },
+    {
+      "path": "tests/test_single_job_run_plan.py",
+      "sha256": "c9937d0f1a70f67944977119959aa256bea2992e755a65b6b6813331078756e0"
+    },
+    {
+      "path": "tests/test_state_store.py",
+      "sha256": "877970c846b4ee0694da30a99aebb6f68270442adf8d45a65309bcb03ef09746"
+    },
+    {
+      "path": "tests/test_supply_inventory.py",
+      "sha256": "56c3b9f83cf92d0c2ae84350d91956cb20adafdcdd061e248719e54b55ddd00a"
+    },
+    {
+      "path": "tests/test_workflow_run.py",
+      "sha256": "59070e01102d65713b026017b343dd95c0819e063cb004c95a01295fcaf6c81e"
+    }
+  ],
+  "license_policy": "no-license-file-owner-decision",
+  "schema_version": 2
+}

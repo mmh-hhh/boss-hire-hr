@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/boss_access_policy.py\"",
+            "timeout": 5,
+            "statusMessage": "Checking BOSS access boundary"
+          }
+        ]
+      }
+    ]
+  }
+}

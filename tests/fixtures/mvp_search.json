@@ -1,0 +1,91 @@
+{
+  "pages": [
+    {
+      "code": 0,
+      "zpData": {
+        "geeks": [
+          {
+            "geekCard": {
+              "encryptGeekId": "geek-a",
+              "securityId": "sec-a",
+              "encryptJobId": "job-open",
+              "name": "候选人A",
+              "workYear": "10年以上",
+              "highestDegreeName": "本科",
+              "city": "上海",
+              "current": {"name": "汽配公司·招商负责人"},
+              "expect": {"name": "招商总监"},
+              "geekDesc": {"name": "负责跨境汽配招商"}
+            },
+            "works": [{"company": {"value": "汽配公司"}, "position": {"value": "招商负责人"}}]
+          },
+          {
+            "geekCard": {
+              "encryptGeekId": "geek-b",
+              "securityId": "sec-b",
+              "encryptJobId": "job-open",
+              "name": "候选人B",
+              "workYear": "5年",
+              "highestDegreeName": "本科",
+              "current": {"name": "平台·招商"}
+            }
+          },
+          {
+            "geekCard": {
+              "encryptGeekId": "geek-c",
+              "securityId": "sec-c",
+              "encryptJobId": "job-open",
+              "name": "候选人C",
+              "workYear": "经验未知",
+              "highestDegreeName": "",
+              "current": {"name": "跨境平台·平台招商"}
+            }
+          },
+          {
+            "geekCard": {
+              "securityId": "temporary-only",
+              "name": "缺少稳定ID"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": 0,
+      "zpData": {
+        "geeks": [
+          {
+            "geekCard": {
+              "encryptGeekId": "geek-a",
+              "securityId": "sec-a-new",
+              "encryptJobId": "job-open",
+              "name": "候选人A",
+              "workYear": "10年以上",
+              "highestDegreeName": "本科"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": 0,
+      "zpData": {"geeks": []}
+    }
+  ],
+  "resumes": {
+    "geek-a": {
+      "code": 0,
+      "parsed": {
+        "basic": {"name": "候选人A", "degree": "本科", "work_years": "10年以上"},
+        "work_experience": [{"company": "汽配公司", "position": "招商负责人"}]
+      }
+    },
+    "geek-c": {
+      "code": 0,
+      "parsed": {
+        "basic": {"name": "候选人C", "degree": "本科", "work_years": "9年"},
+        "work_experience": [{"company": "跨境平台", "position": "平台招商"}]
+      }
+    }
+  }
+}

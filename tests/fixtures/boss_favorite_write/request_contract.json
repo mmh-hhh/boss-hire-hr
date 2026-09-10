@@ -1,0 +1,23 @@
+{
+  "endpoint": "https://www.zhipin.com/wapi/zprelation/userMark/add",
+  "method": "POST",
+  "mark_type": 6,
+  "form_keys": [
+    "encryptMarkId",
+    "markType",
+    "securityId"
+  ],
+  "required_header_keys": [
+    "Content-Type",
+    "Origin",
+    "Referer",
+    "X-Requested-With",
+    "traceid",
+    "zp_token"
+  ],
+  "authoritative_readback_endpoint": "https://www.zhipin.com/wapi/zpitem/web/boss/search/geek/info",
+  "authoritative_confirmation": {
+    "field": "zpData.alreadyInterested",
+    "value": 1
+  }
+}

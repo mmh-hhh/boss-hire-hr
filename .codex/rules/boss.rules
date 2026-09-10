@@ -1,0 +1,50 @@
+prefix_rule(
+    pattern = [
+        [".venv/bin/python", "python", "python3"],
+        "scripts/run_single_job_live.py",
+        ["start", "continue", "close", "authorize", "run", "favorite", "clear-circuit"],
+    ],
+    decision = "forbidden",
+    justification = "Live-capable and state-mutating launcher commands are human-operated. Coding agents may use only configs/status and offline tests.",
+    match = [
+        ".venv/bin/python scripts/run_single_job_live.py start --config search_top5",
+        "python3 scripts/run_single_job_live.py continue",
+        ".venv/bin/python scripts/run_single_job_live.py authorize --config config.json --work-dir data/local/run --confirm-live 2026-09-01 --note reviewed",
+        "python3 scripts/run_single_job_live.py run --live --authorization-id example --config config.json --work-dir data/local/run",
+    ],
+)
+
+prefix_rule(
+    pattern = [[".venv/bin/boss", "boss", "boss-agent-cli"]],
+    decision = "forbidden",
+    justification = "Raw boss-agent-cli bypasses the project guard. Use frozen fixtures and offline tests.",
+    match = [".venv/bin/boss recruiter jobs", "boss recruiter search"],
+)
+
+prefix_rule(
+    pattern = [[".venv/bin/python", "python", "python3"], "-m", "boss_agent_cli"],
+    decision = "forbidden",
+    justification = "Raw boss-agent-cli module execution bypasses the project guard.",
+    match = ["python -m boss_agent_cli recruiter jobs"],
+)
+
+prefix_rule(
+    pattern = [["playwright", ".venv/bin/playwright"]],
+    decision = "forbidden",
+    justification = "Browser automation is disabled for this repository. Use local fixtures.",
+    match = ["playwright open https://www.zhipin.com"],
+)
+
+prefix_rule(
+    pattern = ["npx", "playwright"],
+    decision = "forbidden",
+    justification = "Browser automation is disabled for this repository. Use local fixtures.",
+    match = ["npx playwright open https://www.zhipin.com"],
+)
+
+prefix_rule(
+    pattern = [["curl", "wget", "http", "xh"]],
+    decision = "forbidden",
+    justification = "Raw HTTP clients are disabled in this repository; use reviewed application clients or offline fixtures.",
+    match = ["curl https://www.zhipin.com", "wget https://example.com/file"],
+)

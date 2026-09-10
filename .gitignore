@@ -1,0 +1,43 @@
+# macOS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+.venv/
+/.venv
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets and local authentication
+.env
+.env.*
+!.env.example
+.boss-agent/
+credentials*.json
+cookies*.json
+*.pem
+*.key
+*.p12
+
+# Private production data and generated reports
+data/production/
+data/private/
+data/local/
+/data
+reports/
+/build/
+
+# Network captures: ignore all except sanitized test fixtures
+*.har
+!tests/fixtures/boss.har
+!tests/fixtures/boss_base64.har
+
+# Downloaded nested reference repository
+reference/boss-hr-agent-toolkit/
+
+.playwright-cli*

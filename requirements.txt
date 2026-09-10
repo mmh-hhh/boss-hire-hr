@@ -1,0 +1,2 @@
+# Core screening tool uses Python stdlib only.
+# Optional BOSS live sync dependencies are listed in requirements-boss.txt.

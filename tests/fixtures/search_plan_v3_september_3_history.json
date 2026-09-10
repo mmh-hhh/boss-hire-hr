@@ -1,0 +1,109 @@
+{
+  "fixture_contract": "anonymous_query_history",
+  "as_of": "2026-09-03T18:00:00+08:00",
+  "jd_text": "岗位名称：跨境汽配平台招商总监\n负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长。\n必须有跨境汽配行业经验和汽配商家资源。\n",
+  "strategy": {
+    "target_persona": "具备跨境汽配平台招商经验的人才",
+    "dominant_axis": "industry",
+    "dominant_anchor": "汽配",
+    "jd_evidence": [
+      "必须有跨境汽配行业经验和汽配商家资源"
+    ],
+    "factors": [
+      {
+        "id": "anchor_auto",
+        "category": "anchor",
+        "token": "汽配",
+        "source_term": "汽配行业经验",
+        "jd_evidence": ["必须有跨境汽配行业经验和汽配商家资源"]
+      },
+      {
+        "id": "anchor_cross_auto",
+        "category": "anchor",
+        "token": "跨境汽配",
+        "source_term": "跨境汽配行业经验",
+        "jd_evidence": ["必须有跨境汽配行业经验和汽配商家资源"]
+      },
+      {
+        "id": "role_platform",
+        "category": "role",
+        "token": "平台招商",
+        "source_term": "平台招商",
+        "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]
+      },
+      {
+        "id": "role_leader",
+        "category": "role",
+        "token": "招商负责人",
+        "source_term": "平台招商总监",
+        "jd_evidence": ["岗位名称：跨境汽配平台招商总监"]
+      },
+      {
+        "id": "role_acquisition",
+        "category": "role",
+        "token": "招商",
+        "source_term": "招商",
+        "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]
+      },
+      {
+        "id": "role_merchant",
+        "category": "role",
+        "token": "商家拓展",
+        "source_term": "品牌商拓展",
+        "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]
+      },
+      {
+        "id": "role_growth",
+        "category": "role",
+        "token": "商家增长",
+        "source_term": "商家增长",
+        "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]
+      },
+      {
+        "id": "ecosystem_supply",
+        "category": "ecosystem",
+        "token": "供应链",
+        "source_term": "供应链招商",
+        "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]
+      },
+      {
+        "id": "ecosystem_belt",
+        "category": "ecosystem",
+        "token": "产业带",
+        "source_term": "产业带招商",
+        "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]
+      },
+      {
+        "id": "supply_brand",
+        "category": "supply_object",
+        "token": "品牌商",
+        "source_term": "品牌商拓展",
+        "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]
+      },
+      {
+        "id": "context_cross",
+        "category": "context",
+        "token": "跨境",
+        "source_term": "跨境汽配行业经验",
+        "jd_evidence": ["必须有跨境汽配行业经验和汽配商家资源"]
+      }
+    ]
+  },
+  "routes": [
+    {"id": "old_platform", "priority": 1, "type": "industry_role", "factor_ids": ["anchor_auto", "role_platform"], "target_persona": "汽配平台招商人才", "reason": "历史直接职能路线", "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]},
+    {"id": "old_leader", "priority": 2, "type": "title", "factor_ids": ["anchor_auto", "role_leader"], "target_persona": "汽配招商负责人", "reason": "历史职位路线", "jd_evidence": ["岗位名称：跨境汽配平台招商总监"]},
+    {"id": "old_cross", "priority": 3, "type": "industry_role", "factor_ids": ["anchor_cross_auto", "role_acquisition"], "target_persona": "跨境汽配招商人才", "reason": "历史跨境行业路线", "jd_evidence": ["必须有跨境汽配行业经验和汽配商家资源"]},
+    {"id": "old_supply", "priority": 5, "type": "ecosystem_role", "factor_ids": ["anchor_auto", "ecosystem_supply", "role_acquisition"], "target_persona": "汽配供应链招商人才", "reason": "历史供应链路线", "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]},
+    {"id": "new_belt", "priority": 6, "type": "ecosystem_role", "factor_ids": ["anchor_auto", "ecosystem_belt", "role_acquisition"], "target_persona": "汽配产业带招商人才", "reason": "未执行产业带路线", "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]},
+    {"id": "new_brand", "priority": 7, "type": "ecosystem_role", "factor_ids": ["anchor_auto", "supply_brand", "role_acquisition"], "target_persona": "汽配品牌商招商人才", "reason": "未执行品牌商路线", "jd_evidence": ["负责汽配平台招商、供应链招商、产业带招商、品牌商拓展和商家增长"]},
+    {"id": "new_cross_growth", "priority": 8, "type": "skill_role", "factor_ids": ["anchor_auto", "context_cross", "role_growth"], "target_persona": "跨境汽配商家增长人才", "reason": "未执行跨境增长路线", "jd_evidence": ["必须有跨境汽配行业经验和汽配商家资源"]},
+    {"id": "new_cross_platform", "priority": 9, "type": "industry_role", "factor_ids": ["anchor_auto", "context_cross", "role_platform"], "target_persona": "跨境汽配平台招商人才", "reason": "未执行跨境平台路线", "jd_evidence": ["岗位名称：跨境汽配平台招商总监"]}
+  ],
+  "history_rows": [
+    {"query": "汽配平台招商", "tokens": ["汽配", "平台招商"], "last_used_at": "2026-09-03T16:00:00+08:00", "execution_count": 2, "returned_count": 15, "new_to_inventory_count": 4, "marginal_new_count": 4, "duplicate_rate": 0.7333333333, "evaluated_count": 0, "median_score": null},
+    {"query": "汽配招商负责人", "tokens": ["汽配", "招商负责人"], "last_used_at": "2026-09-03T16:05:00+08:00", "execution_count": 2, "returned_count": 15, "new_to_inventory_count": 2, "marginal_new_count": 2, "duplicate_rate": 0.8666666667, "evaluated_count": 0, "median_score": null},
+    {"query": "跨境汽配招商", "tokens": ["跨境汽配", "招商"], "last_used_at": "2026-09-03T16:10:00+08:00", "execution_count": 2, "returned_count": 15, "new_to_inventory_count": 1, "marginal_new_count": 1, "duplicate_rate": 0.9333333333, "evaluated_count": 0, "median_score": null},
+    {"query": "汽配商家拓展", "tokens": ["汽配", "商家拓展"], "last_used_at": "2026-09-03T16:15:00+08:00", "execution_count": 1, "returned_count": 15, "new_to_inventory_count": 3, "marginal_new_count": 3, "duplicate_rate": 0.8, "evaluated_count": 0, "median_score": null},
+    {"query": "汽配供应链招商", "tokens": ["汽配", "供应链", "招商"], "last_used_at": "2026-09-03T16:20:00+08:00", "execution_count": 1, "returned_count": 15, "new_to_inventory_count": 5, "marginal_new_count": 5, "duplicate_rate": 0.6666666667, "evaluated_count": 0, "median_score": null}
+  ]
+}

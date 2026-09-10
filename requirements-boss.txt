@@ -1,0 +1,3 @@
+# Optional: only needed when syncing JD/resumes from BOSS 直聘.
+boss-agent-cli==1.19.1
+patchright>=1.40
