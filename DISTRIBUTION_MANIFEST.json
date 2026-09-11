@@ -1,5 +1,5 @@
 {
-  "file_count": 97,
+  "file_count": 99,
   "files": [
     {
       "path": ".codex/hooks.json",
@@ -31,7 +31,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "3ca558e9b06cd665dc00ee7b6841784b81639ca94b575b1187899c9d53c4077f"
+      "sha256": "7a75a6b887a3ae5fbb221125bcd2bfe6e79e932c7fa04dbf66d060ef9b2462b3"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -182,6 +182,14 @@
       "sha256": "3fc3c1a7599cbe8755c209af6e69c6178f11ea16735a1cc4c13b056cd7b0aa81"
     },
     {
+      "path": "docs/hr-workflow-interview-preview.png",
+      "sha256": "67e29a53e784dcba2a1998d805feeb36da08531065b1a770567275e30ff2ab23"
+    },
+    {
+      "path": "docs/hr-workflow-interview.pptx",
+      "sha256": "3838ac527fefe24f68200f065aef03fc8a8114ff99725b2bcce1eb75fed30cb3"
+    },
+    {
       "path": "requirements-boss.txt",
       "sha256": "f2d52a08a9b795c071342df686001528a38424fb4f14b464a5e0251abf97477f"
     },
@@ -327,7 +335,7 @@
     },
     {
       "path": "tests/test_public_distribution_contract.py",
-      "sha256": "53e6faee6e9d314bfd67f7ec8b58fde02bd80801f6d387e787f9695cbc12198c"
+      "sha256": "60d47a1cef82c5719d367a1026bb81f416f06d1401c3d96f9f4ed816af080434"
     },
     {
       "path": "tests/test_ranking_contract.py",

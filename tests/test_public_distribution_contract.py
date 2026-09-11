@@ -61,6 +61,8 @@ class PublicDistributionContractTests(unittest.TestCase):
         self.assertIn("本仓库有意不包含 `LICENSE`", readme)
         self.assertIn("docs/hr-capability-demo-preview.png", readme)
         self.assertIn("docs/hr-capability-demo.pptx", readme)
+        self.assertIn("docs/hr-workflow-interview-preview.png", readme)
+        self.assertIn("docs/hr-workflow-interview.pptx", readme)
         for required in (
             "recommendation_source_enabled",
             "top_priority_search_query_count",

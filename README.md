@@ -10,6 +10,12 @@
 
 [下载可编辑的 6 页 PowerPoint 演示稿](docs/hr-capability-demo.pptx)。内容覆盖当前招聘闭环、HR 与 coding agent 的分工、典型使用场景、候选结果示意和 5 分钟现场演示脚本。
 
+## HR 工作流程讨论示例
+
+![HR 工作流程讨论九页预览](docs/hr-workflow-interview-preview.png)
+
+[下载可编辑的 9 页 PowerPoint](docs/hr-workflow-interview.pptx)。演示稿使用一个脱敏岗位案例，展示原始 JD 如何形成评分卡和搜索词，并用两份脱敏简历讨论候选排序是否符合 HR 的实际工作习惯。候选姓名、公司名称、联系方式和其他无关个人信息均未包含在公开文件中。
+
 ## 直接交给 coding agent 的提示词
 
 复制下面这段：
